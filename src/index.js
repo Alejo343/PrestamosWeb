@@ -8,13 +8,11 @@ import 'simplebar/src/simplebar.css';
 // third-party
 import { Provider as ReduxProvider } from 'react-redux';
 
-// apex-chart
-import 'assets/third-party/apex-chart.css';
-
 // project import
 import App from './App';
 import { store } from 'store';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from '../src/hooks/useAuth';
 
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
@@ -23,8 +21,10 @@ const root = createRoot(container); // createRoot(container!) if you use TypeScr
 root.render(
     <StrictMode>
         <ReduxProvider store={store}>
-            <BrowserRouter basename="/free">
-                <App />
+            <BrowserRouter>
+                <AuthProvider>
+                    <App />
+                </AuthProvider>
             </BrowserRouter>
         </ReduxProvider>
     </StrictMode>
